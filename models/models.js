@@ -76,3 +76,19 @@ try {
 } catch (e) {
     console.error(e);
 }
+
+// deleteItem quantity error
+try {
+    parkStMarket.deleteItem("banana", 11);
+} catch (e) {
+    console.error(e);
+    parkStMarket.seeInventory(); // {"apple" : 3, "banana": 9};
+}
+
+// deleteItem no such item in inventory
+try {
+    parkStMarket.deleteItem("lemon", 1);
+} catch (e) {
+    console.error(e);
+    parkStMarket.seeInventory(); // {"apple" : 3, "banana": 9};
+}

@@ -1,1 +1,1 @@
-# simple-point-of-sale
+# Simple Point of Sale

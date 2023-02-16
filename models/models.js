@@ -24,6 +24,16 @@ class Store {
         if (itemName in this.inventory) this.inventory[itemName] += quantity;
         else this.inventory[itemName] = quantity;
     }
+
+    deleteItem(itemName, quantity) {
+        /* Error handling */
+        if (typeof itemName !== 'string') throw new TypeError("Please enter a string for item name argument");
+        if (!(itemName in this.inventory)) throw new Error("No such item in inventory");
+        if (quantity <= 0) throw new Error("Please enter a positive integer.");
+        if (this.inventory[itemName] - quantity < 0) throw new Error("Item quantity cannot fall below zero.");
+
+        this.inventory[itemName] -= quantity;
+    }
 }
 
 /* TODO: CREATE ITEM MODEL */
@@ -50,16 +60,17 @@ const parkStMarket = new Store('parkStMarket');
 parkStMarket.stockItem("apple", 2);
 parkStMarket.stockItem("apple", 1);
 parkStMarket.stockItem("banana", 10);
-parkStMarket.seeInventory() // {"apple" : 3, "banana": 10};
+parkStMarket.deleteItem("banana", 1);
+parkStMarket.seeInventory() // {"apple" : 3, "banana": 9};
 
-// type error
+// stockItem type error
 try {
     parkStMarket.stockItem(false, 2);
 } catch (e) {
     console.error(e);
 }
 
-// quantity error
+// stockItem quantity error
 try {
     parkStMarket.stockItem("banana", -1);
 } catch (e) {

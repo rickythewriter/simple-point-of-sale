@@ -45,14 +45,21 @@ class Item {
 const parkStMarket = new Store('parkStMarket');
 
 // add an item to the store
+// does the store reflect the proper amount of items?
+// can I see the items?
 parkStMarket.stockItem("apple", 2);
 parkStMarket.seeInventory() // {"apple" : 2}
 
 // type error
-// parkStMarket.stockItem(false, 2);
+try {
+    parkStMarket.stockItem(false, 2);
+} catch (e) {
+    console.error(e);
+}
 
 // quantity error
-parkStMarket.stockItem("banana", -1);
-
-// does the store reflect the proper amount of items?
-// can I see the items?
+try {
+    parkStMarket.stockItem("banana", -1);
+} catch (e) {
+    console.error(e);
+}

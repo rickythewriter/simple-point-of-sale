@@ -45,10 +45,12 @@ class Item {
 const parkStMarket = new Store('parkStMarket');
 
 // add an item to the store
-// does the store reflect the proper amount of items?
-// can I see the items?
+// does the store reflect the proper amount of items? Y
+// can I see the items? Y
 parkStMarket.stockItem("apple", 2);
-parkStMarket.seeInventory() // {"apple" : 2}
+parkStMarket.stockItem("apple", 1);
+parkStMarket.stockItem("banana", 10);
+parkStMarket.seeInventory() // {"apple" : 3, "banana": 10};
 
 // type error
 try {
